@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    text-align: center;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 10px 0 0 0;
+    color: #ddd;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+a, .botao, input[type="submit"] {
+    color: #111;
+    background: white;
+    text-decoration: none;
+    border: 1px solid #111;
+    padding: 10px 14px;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+
+a:hover, .botao:hover, input[type="submit"]:hover {
+    background: #111;
+    color: white;
+}
+
+.remover {
+    font-size: 14px;
+    padding: 7px 10px;
+}
+
+.produtos {
+    padding: 30px 10px;
+}
+
+.produto {
+    display: inline-block;
+    width: 260px;
+    margin: 15px;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.produto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.caixa {
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid #ddd;
+}
+
+.item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+input {
+    width: 90%;
+    max-width: 350px;
+    padding: 10px;
+    margin: 8px;
+    border: 1px solid #111;
+    background: white;
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+fieldset input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 6px 0 12px;
+    padding: 10px;
+}
+
+fieldset input[type="submit"] {
+    padding: 10px 16px;
+    cursor: pointer;
+}
