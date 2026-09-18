@@ -1,6 +1,5 @@
 <?php
 
-// Funcao fornecida no DLL.php. O destino foi ajustado para o login da loja.
 Function teste_login($sessao) {
     if($sessao != "ok"){
         header("Location: login.php");
@@ -8,7 +7,6 @@ Function teste_login($sessao) {
     }
 }
 
-// Funcao principal fornecida para executar comandos SQL.
 Function banco($server, $user, $password, $db, $consulta)
 {
     $banco = new mysqli($server, $user, $password, $db);
@@ -27,8 +25,6 @@ Function banco($server, $user, $password, $db, $consulta)
     return $resultado;
 }
 
-// Funcao de formulario fornecida no DLL.php.
-// Escreva null nos campos e botoes que nao serao usados.
 function form($action,$var1,$var2,$var3,$var4,$var5,$var6,$var7,$b1,$b2,$b3){
     echo "
     <style type='text/css'>
