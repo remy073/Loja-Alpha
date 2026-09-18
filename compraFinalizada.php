@@ -10,16 +10,35 @@ teste_login($sessao);
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Compra Finalizada</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra Finalizada · Alpha</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><h1>Compra Finalizada</h1></header>
-<main class="caixa">
-<p>Compra realizada com sucesso.</p>
-<p>Os dados foram salvos no <strong>banco de dados</strong> usando a funcao <strong>banco()</strong>.</p>
-<p><a href="index.php">Voltar para a loja</a></p>
-<p><a href="sair.php">Sair</a></p>
+
+<header class="topo">
+    <div class="topo-conteudo">
+        <h1 class="logo">ALPHA</h1>
+        <p class="slogan">Pedido confirmado</p>
+    </div>
+</header>
+
+<main class="conteudo">
+    <section class="painel painel-estreito sucesso">
+        <div class="sucesso-icone">✓</div>
+        <h2 class="painel-titulo">Compra realizada com sucesso</h2>
+        <p>Seus dados foram salvos e seu pedido foi confirmado.</p>
+
+        <div class="painel-acoes">
+            <a class="botao destaque" href="index.php">Voltar para a loja</a>
+            <a class="botao" href="sair.php">Sair</a>
+        </div>
+    </section>
 </main>
+
+<footer class="rodape">
+    <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
+</footer>
+
 </body>
 </html>
