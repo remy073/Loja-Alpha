@@ -3,11 +3,8 @@ session_start();
 include "app/cons.php";
 require_once "app/DLL.php";
 
-// Mesmo padrao do banco.php fornecido:
-// transforma os campos enviados pelo formulario em variaveis simples.
 extract($_POST);
 
-// CADASTRO
 if(isset($Cadastrar)){
     $consulta = "INSERT INTO usuarios (Id, Nome, Email, Senha) VALUES (NULL, '$nome', '$email', '$senha')";
     banco($server, $user, $password, $db, $consulta);
@@ -15,7 +12,6 @@ if(isset($Cadastrar)){
     exit();
 }
 
-// LOGIN
 if(isset($Entrar)){
     $consulta = "SELECT * FROM usuarios WHERE Email = '$email' and Senha = '$senha'";
     $resultado = banco($server, $user, $password, $db, $consulta);
@@ -32,7 +28,6 @@ if(isset($Entrar)){
     }
 }
 
-// FINALIZAR VENDA
 if(isset($Finalizar)){
     $sessao = "nao";
     if(isset($_SESSION['login'])) $sessao = $_SESSION['login'];
