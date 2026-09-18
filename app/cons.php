@@ -1,7 +1,6 @@
 <?php
-// Mesmo modelo do cons.php fornecido, com os dados do banco local da loja.
-$server = "localhost";
+$server = "localhost:3307";
 $user = "root";
-$password = "";
+$password = "19661904Dr.";
 $db = "loja4";
 ?>
