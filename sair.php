@@ -6,4 +6,4 @@ unset($_SESSION['login']);
 unset($_SESSION['carrinho']);
 header('Location: login.php');
 exit;
-?>
+?> 
