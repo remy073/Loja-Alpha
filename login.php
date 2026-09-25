@@ -32,7 +32,7 @@ require_once "app/DLL.php";
         <p class="auth-subtitulo">Bem-vindo de volta. Continue de onde parou.</p>
 
         <?php
-        form("banco.php", "email", "senha", null, null, null, null, null, "Entrar", null, null);
+        form("banco.php", "email", "senha", null, null, null, null, null, null, "Entrar", null, null);
         ?>
 
         <div class="painel-rodape">
