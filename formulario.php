@@ -31,10 +31,10 @@ require_once "app/DLL.php";
         </div>
 
         <h2 class="painel-titulo">Cadastro</h2>
-        <p class="auth-subtitulo">Crie sua conta e comece a treinar com estilo.</p>
+        <p class="auth-subtitulo">Crie sua conta e cadastre seu endereço.</p>
 
         <?php
-        form("banco.php", "nome", "email", "senha", null, null, null, null, "Cadastrar", null, null);
+        form("banco.php", "nome", "email", "senha", "estado", "cidade", "bairro", "rua", "numero", "Cadastrar", null, null);
         ?>
 
         <div class="painel-rodape">
