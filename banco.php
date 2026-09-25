@@ -5,13 +5,16 @@ require_once "app/DLL.php";
 
 extract($_POST);
 
+// CADASTRO
 if(isset($Cadastrar)){
-    $consulta = "INSERT INTO usuarios (Id, Nome, Email, Senha) VALUES (NULL, '$nome', '$email', '$senha')";
+    $consulta = "INSERT INTO usuarios (Id, Nome, Email, Senha, Estado, Cidade, Bairro, Rua, Numero) 
+                 VALUES (NULL, '$nome', '$email', '$senha', '$estado', '$cidade', '$bairro', '$rua', '$numero')";
     banco($server, $user, $password, $db, $consulta);
     header("Location: login.php");
     exit();
 }
 
+// LOGIN
 if(isset($Entrar)){
     $consulta = "SELECT * FROM usuarios WHERE Email = '$email' and Senha = '$senha'";
     $resultado = banco($server, $user, $password, $db, $consulta);
@@ -28,6 +31,7 @@ if(isset($Entrar)){
     }
 }
 
+// FINALIZAR VENDA
 if(isset($Finalizar)){
     $sessao = "nao";
     if(isset($_SESSION['login'])) $sessao = $_SESSION['login'];
@@ -45,7 +49,8 @@ if(isset($Finalizar)){
         }
     }
 
-    $consulta = "INSERT INTO vendas (Id, Email, Estado, Cidade, Bairro, Rua, Numero, Produtos, Total) VALUES (NULL, '$email', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$produtos', '$total')";
+    $consulta = "INSERT INTO vendas (Id, Email, Estado, Cidade, Bairro, Rua, Numero, Produtos, Total) 
+                 VALUES (NULL, '$email', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$produtos', '$total')";
     banco($server, $user, $password, $db, $consulta);
 
     unset($_SESSION['carrinho']);
