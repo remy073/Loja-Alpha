@@ -25,7 +25,7 @@ Function banco($server, $user, $password, $db, $consulta)
     return $resultado;
 }
 
-function form($action,$var1,$var2,$var3,$var4,$var5,$var6,$var7,$b1,$b2,$b3){
+function form($action,$var1,$var2,$var3,$var4,$var5,$var6,$var7,$var8,$b1,$b2,$b3){
     echo "
     <style type='text/css'>
     label.incluir {
@@ -64,6 +64,10 @@ function form($action,$var1,$var2,$var3,$var4,$var5,$var6,$var7,$b1,$b2,$b3){
     if(isset($var7)){
         echo "<label for='$var7' class='incluir'>$var7:</label>";
         echo "<input type='text' name='$var7'/><br/>";
+    }
+    if(isset($var8)){
+        echo "<label for='$var8' class='incluir'>$var8:</label>";
+        echo "<input type='text' name='$var8'/><br/>";
     }
 
     if(isset($b1)) echo "<input type='submit' value='$b1' name='$b1'/>";
