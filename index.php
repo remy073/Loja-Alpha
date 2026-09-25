@@ -123,7 +123,7 @@ if(isset($adicionar)){
         <p>Linha Black Skull — feita para quem treina pesado.</p>
     </section>
 
-    // FILTRO DE CATEGORIAS 
+    <!-- FILTRO DE CATEGORIAS  -->
     <nav class="filtros" id="filtros">
         <button class="filtro ativo" data-categoria="todos">Todos</button>
         <button class="filtro" data-categoria="roupas">Roupas</button>
@@ -131,7 +131,7 @@ if(isset($adicionar)){
         <button class="filtro" data-categoria="suplementos">Suplementos</button>
     </nav>
 
-    //  VITRINE 
+    <!-- VITRINE -->
     <section class="produtos" id="produtos">
         <?php foreach($itens as $key => $value){ ?>
             <article class="produto" data-categoria="<?php echo $value['categoria']; ?>">
@@ -158,7 +158,7 @@ if(isset($adicionar)){
     <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
 </footer>
 
-//  SCRIPT DE FILTRO 
+<!--  SCRIPT DE FILTRO -->
 <script>
     const botoes  = document.querySelectorAll('.filtro');
     const cards   = document.querySelectorAll('.produto');
