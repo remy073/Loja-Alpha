@@ -56,7 +56,7 @@ $itens = [
         'badge'    => null
     ],
     [
-        'imagem'   => 'img/bolsa.webp',
+        'imagem'   => 'img/bolsabs.webp',
         'preco'    => 149,
         'nome'     => 'Bolsa Esportiva Black Skull',
         'categoria'=> 'acessorios',
