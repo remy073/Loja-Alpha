@@ -3,7 +3,7 @@ session_start();
 extract($_GET);
 
 $itens = [
-    //  ROUPAS 
+    // ============ ROUPAS ============
     [
         'imagem'   => 'img/camisabs.webp',
         'preco'    => 89,
@@ -33,7 +33,7 @@ $itens = [
         'badge'    => null
     ],
 
-    //  ACESSÓRIOS     
+    // ============ ACESSÓRIOS ============
     [
         'imagem'   => 'img/copobs.webp',
         'preco'    => 49,
@@ -41,8 +41,50 @@ $itens = [
         'categoria'=> 'acessorios',
         'badge'    => 'Top'
     ],
+    [
+        'imagem'   => 'img/mochila.webp',
+        'preco'    => 349,
+        'nome'     => 'Mochila Black Skull Oficial Clio 50 Litros',
+        'categoria'=> 'acessorios',
+        'badge'    => null
+    ],
+    [
+        'imagem'   => 'img/bone.webp',
+        'preco'    => 89,
+        'nome'     => 'Boné Black Skull Cinza',
+        'categoria'=> 'acessorios',
+        'badge'    => null
+    ],
+    [
+        'imagem'   => 'img/bolsa.webp',
+        'preco'    => 149,
+        'nome'     => 'Bolsa Esportiva Black Skull',
+        'categoria'=> 'acessorios',
+        'badge'    => null
+    ],
+    [
+        'imagem'   => 'img/tenisbranco.webp',
+        'preco'    => 299,
+        'nome'     => 'Tênis Black Skull Urban Camo Preto c/ Branco',
+        'categoria'=> 'acessorios',
+        'badge'    => 'Novo'
+    ],
+    [
+        'imagem'   => 'img/tenispreto.webp',
+        'preco'    => 299,
+        'nome'     => 'Tênis Black Skull Urban Camo Preto c/ Cinza',
+        'categoria'=> 'acessorios',
+        'badge'    => null
+    ],
+    [
+        'imagem'   => 'img/americatenis.webp',
+        'preco'    => 349,
+        'nome'     => 'Tênis Black Skull Lifter Ipo American',
+        'categoria'=> 'acessorios',
+        'badge'    => null
+    ],
 
-    //  SUPLEMENTOS 
+    // ============ SUPLEMENTOS ============
     [
         'imagem'   => 'img/creatina.webp',
         'preco'    => 129,
@@ -123,7 +165,7 @@ if(isset($adicionar)){
         <p>Linha Black Skull — feita para quem treina pesado.</p>
     </section>
 
-    <!-- FILTRO DE CATEGORIAS  -->
+    <!-- FILTRO DE CATEGORIAS -->
     <nav class="filtros" id="filtros">
         <button class="filtro ativo" data-categoria="todos">Todos</button>
         <button class="filtro" data-categoria="roupas">Roupas</button>
@@ -158,7 +200,7 @@ if(isset($adicionar)){
     <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
 </footer>
 
-<!--  SCRIPT DE FILTRO -->
+<!-- SCRIPT DE FILTRO -->
 <script>
     const botoes  = document.querySelectorAll('.filtro');
     const cards   = document.querySelectorAll('.produto');
