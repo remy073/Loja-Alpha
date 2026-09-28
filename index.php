@@ -3,7 +3,7 @@ session_start();
 extract($_GET);
 
 $itens = [
-    // ============ ROUPAS ============
+    // ROUPAS
     [
         'imagem'   => 'img/camisabs.webp',
         'preco'    => 89,
@@ -33,7 +33,7 @@ $itens = [
         'badge'    => null
     ],
 
-    // ============ ACESSÓRIOS ============
+    // ACESSÓRIOS
     [
         'imagem'   => 'img/copobs.webp',
         'preco'    => 49,
@@ -84,7 +84,7 @@ $itens = [
         'badge'    => null
     ],
 
-    // ============ SUPLEMENTOS ============
+    // SUPLEMENTOS
     [
         'imagem'   => 'img/creatina.webp',
         'preco'    => 129,
@@ -150,10 +150,16 @@ if(isset($adicionar)){
         <p class="slogan">Performance · Estilo · Conforto</p>
 
         <nav class="menu">
-            <a href="index.php" class="ativo">Vitrine</a>
+            <a href="index.php">Vitrine</a>
             <a href="carrinho.php">Carrinho</a>
-            <a href="login.php">Login</a>
-            <a href="formulario.php">Cadastro</a>
+
+            <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
+                <a href="minhasCompras.php">Minhas Compras</a>
+                <a href="sair.php">Sair</a>
+            <?php }else{ ?>
+                <a href="login.php">Login</a>
+                <a href="formulario.php">Cadastro</a>
+            <?php } ?>
         </nav>
     </div>
 </header>
@@ -165,7 +171,6 @@ if(isset($adicionar)){
         <p>Linha Black Skull — feita para quem treina pesado.</p>
     </section>
 
-    <!-- FILTRO DE CATEGORIAS -->
     <nav class="filtros" id="filtros">
         <button class="filtro ativo" data-categoria="todos">Todos</button>
         <button class="filtro" data-categoria="roupas">Roupas</button>
@@ -173,7 +178,6 @@ if(isset($adicionar)){
         <button class="filtro" data-categoria="suplementos">Suplementos</button>
     </nav>
 
-    <!-- VITRINE -->
     <section class="produtos" id="produtos">
         <?php foreach($itens as $key => $value){ ?>
             <article class="produto" data-categoria="<?php echo $value['categoria']; ?>">
@@ -200,7 +204,6 @@ if(isset($adicionar)){
     <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
 </footer>
 
-<!-- SCRIPT DE FILTRO -->
 <script>
     const botoes  = document.querySelectorAll('.filtro');
     const cards   = document.querySelectorAll('.produto');
