@@ -20,6 +20,13 @@ teste_login($sessao);
     <div class="topo-conteudo">
         <h1 class="logo">ALPHA</h1>
         <p class="slogan">Pedido confirmado</p>
+
+        <nav class="menu">
+            <a href="index.php">Vitrine</a>
+            <a href="carrinho.php">Carrinho</a>
+            <a href="minhasCompras.php">Minhas Compras</a>
+            <a href="sair.php">Sair</a>
+        </nav>
     </div>
 </header>
 

@@ -27,6 +27,13 @@ $usuario = $resultado->fetch_assoc();
     <div class="topo-conteudo">
         <h1 class="logo">ALPHA</h1>
         <p class="slogan">Finalizar compra</p>
+
+        <nav class="menu">
+            <a href="index.php">Vitrine</a>
+            <a href="carrinho.php">Carrinho</a>
+            <a href="minhasCompras.php">Minhas Compras</a>
+            <a href="sair.php">Sair</a>
+        </nav>
     </div>
 </header>
 
@@ -62,7 +69,7 @@ $usuario = $resultado->fetch_assoc();
 
                 <div class="campo">
                     <label for="numero">Número</label>
-                    <input type="text" id="numero" name="numero"/>
+                    <input type="text" id="numero" name="numero" value="<?php echo $usuario['Numero']; ?>"/>
                 </div>
 
                 <div class="acoes">
@@ -79,10 +86,6 @@ $usuario = $resultado->fetch_assoc();
             </div>
 
         <?php } ?>
-
-        <div class="painel-rodape">
-            <p><a href="sair.php">Sair da conta</a></p>
-        </div>
     </section>
 </main>
 

@@ -23,10 +23,18 @@ if(isset($remover)){
     <div class="topo-conteudo">
         <h1 class="logo">ALPHA</h1>
         <p class="slogan">Seu carrinho</p>
+
         <nav class="menu">
-            <a href="index.php">Continuar comprando</a>
-            <a href="login.php">Login</a>
-            <a href="formulario.php">Cadastro</a>
+            <a href="index.php">Vitrine</a>
+            <a href="carrinho.php">Carrinho</a>
+
+            <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
+                <a href="minhasCompras.php">Minhas Compras</a>
+                <a href="sair.php">Sair</a>
+            <?php }else{ ?>
+                <a href="login.php">Login</a>
+                <a href="formulario.php">Cadastro</a>
+            <?php } ?>
         </nav>
     </div>
 </header>
