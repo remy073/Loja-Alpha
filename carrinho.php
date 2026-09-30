@@ -26,7 +26,7 @@ if(isset($remover)){
 
         <nav class="menu">
             <a href="index.php">Vitrine</a>
-            <a href="carrinho.php">Carrinho</a>
+            <a href="carrinho.php" class="ativo">Carrinho</a>
 
             <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
                 <a href="minhasCompras.php">Minhas Compras</a>

@@ -4,120 +4,29 @@ extract($_GET);
 
 $itens = [
     // ROUPAS
-    [
-        'imagem'   => 'img/camisabs.webp',
-        'preco'    => 89,
-        'nome'     => 'Camisa Compressão Black Skull Branca',
-        'categoria'=> 'roupas',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/camisabs2.webp',
-        'preco'    => 89,
-        'nome'     => 'Camisa Compressão Black Skull Preta',
-        'categoria'=> 'roupas',
-        'badge'    => 'Novo'
-    ],
-    [
-        'imagem'   => 'img/shortbsblack.webp',
-        'preco'    => 79,
-        'nome'     => 'Bermuda Compressão Black Skull Preta',
-        'categoria'=> 'roupas',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/shortbsgray.webp',
-        'preco'    => 79,
-        'nome'     => 'Bermuda Compressão Black Skull Cinza',
-        'categoria'=> 'roupas',
-        'badge'    => null
-    ],
+    ['imagem'=>'img/camisabs.webp',    'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Branca',  'categoria'=>'roupas',      'badge'=>null],
+    ['imagem'=>'img/camisabs2.webp',   'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Preta',   'categoria'=>'roupas',      'badge'=>'Novo'],
+    ['imagem'=>'img/shortbsblack.webp','preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Preta',  'categoria'=>'roupas',      'badge'=>null],
+    ['imagem'=>'img/shortbsgray.webp', 'preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Cinza',  'categoria'=>'roupas',      'badge'=>null],
 
     // ACESSÓRIOS
-    [
-        'imagem'   => 'img/copobs.webp',
-        'preco'    => 49,
-        'nome'     => 'Coqueteleira Black Skull',
-        'categoria'=> 'acessorios',
-        'badge'    => 'Top'
-    ],
-    [
-        'imagem'   => 'img/mochila.webp',
-        'preco'    => 349,
-        'nome'     => 'Mochila Black Skull Oficial Clio 50 Litros',
-        'categoria'=> 'acessorios',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/bone.webp',
-        'preco'    => 89,
-        'nome'     => 'Boné Black Skull Cinza',
-        'categoria'=> 'acessorios',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/bolsabs.webp',
-        'preco'    => 149,
-        'nome'     => 'Bolsa Esportiva Black Skull',
-        'categoria'=> 'acessorios',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/tenisbranco.webp',
-        'preco'    => 299,
-        'nome'     => 'Tênis Black Skull Urban Camo Preto c/ Branco',
-        'categoria'=> 'acessorios',
-        'badge'    => 'Novo'
-    ],
-    [
-        'imagem'   => 'img/tenispreto.webp',
-        'preco'    => 299,
-        'nome'     => 'Tênis Black Skull Urban Camo Preto c/ Cinza',
-        'categoria'=> 'acessorios',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/americatenis.webp',
-        'preco'    => 349,
-        'nome'     => 'Tênis Black Skull Lifter Ipo American',
-        'categoria'=> 'acessorios',
-        'badge'    => null
-    ],
+    ['imagem'=>'img/copobs.webp',      'preco'=>49,  'nome'=>'Coqueteleira Black Skull',              'categoria'=>'acessorios',  'badge'=>'Top'],
+    ['imagem'=>'img/mochila.webp',     'preco'=>349, 'nome'=>'Mochila Black Skull Oficial Clio 50L',  'categoria'=>'acessorios',  'badge'=>null],
+    ['imagem'=>'img/bone.webp',        'preco'=>89,  'nome'=>'Boné Black Skull Cinza',                'categoria'=>'acessorios',  'badge'=>null],
+    ['imagem'=>'img/bolsabs.webp',     'preco'=>149, 'nome'=>'Bolsa Esportiva Black Skull',           'categoria'=>'acessorios',  'badge'=>null],
+    ['imagem'=>'img/tenisbranco.webp', 'preco'=>299, 'nome'=>'Tênis Black Skull Urban Camo Branco',   'categoria'=>'acessorios',  'badge'=>'Novo'],
+    ['imagem'=>'img/tenispreto.webp',  'preco'=>299, 'nome'=>'Tênis Black Skull Urban Camo Cinza',    'categoria'=>'acessorios',  'badge'=>null],
+    ['imagem'=>'img/americatenis.webp','preco'=>349, 'nome'=>'Tênis Black Skull Lifter Ipo American', 'categoria'=>'acessorios',  'badge'=>null],
 
     // SUPLEMENTOS
-    [
-        'imagem'   => 'img/creatina.webp',
-        'preco'    => 129,
-        'nome'     => 'Creatina Monohidratada Black Skull',
-        'categoria'=> 'suplementos',
-        'badge'    => 'Mais vendido'
-    ],
-    [
-        'imagem'   => 'img/pretreino.webp',
-        'preco'    => 149,
-        'nome'     => 'Pré-Treino B.O.P.E Black Skull',
-        'categoria'=> 'suplementos',
-        'badge'    => null
-    ],
-    [
-        'imagem'   => 'img/whey.webp',
-        'preco'    => 199,
-        'nome'     => 'Whey 100% Black Skull',
-        'categoria'=> 'suplementos',
-        'badge'    => 'Mais vendido'
-    ],
-    [
-        'imagem'   => 'img/cafeina.webp',
-        'preco'    => 99,
-        'nome'     => 'Thermo Flame Cafeína Black Skull',
-        'categoria'=> 'suplementos',
-        'badge'    => 'Novo'
-    ]
+    ['imagem'=>'img/creatina.webp',    'preco'=>129, 'nome'=>'Creatina Monohidratada Black Skull',    'categoria'=>'suplementos', 'badge'=>'Mais vendido'],
+    ['imagem'=>'img/pretreino.webp',   'preco'=>149, 'nome'=>'Pré-Treino B.O.P.E Black Skull',        'categoria'=>'suplementos', 'badge'=>null],
+    ['imagem'=>'img/whey.webp',        'preco'=>199, 'nome'=>'Whey 100% Black Skull',                 'categoria'=>'suplementos', 'badge'=>'Mais vendido'],
+    ['imagem'=>'img/cafeina.webp',     'preco'=>99,  'nome'=>'Thermo Flame Cafeína Black Skull',      'categoria'=>'suplementos', 'badge'=>'Novo']
 ];
 
 if(isset($adicionar)){
     $idProduto = (int) $adicionar;
-
     if(isset($itens[$idProduto])){
         if(isset($_SESSION['carrinho'][$idProduto])){
             $_SESSION['carrinho'][$idProduto]['quantidade']++;
@@ -128,7 +37,6 @@ if(isset($adicionar)){
                 'preco'      => $itens[$idProduto]['preco']
             ];
         }
-
         header('Location: carrinho.php');
         exit;
     }
@@ -150,7 +58,7 @@ if(isset($adicionar)){
         <p class="slogan">Performance · Estilo · Conforto</p>
 
         <nav class="menu">
-            <a href="index.php">Vitrine</a>
+            <a href="index.php" class="ativo">Vitrine</a>
             <a href="carrinho.php">Carrinho</a>
 
             <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
@@ -187,9 +95,7 @@ if(isset($adicionar)){
                 <?php } ?>
 
                 <div class="produto-imagem">
-                    <img src="<?php echo $value['imagem']; ?>"
-                         alt="<?php echo $value['nome']; ?>"
-                         loading="lazy">
+                    <img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['nome']; ?>" loading="lazy">
                 </div>
                 <h3><?php echo $value['nome']; ?></h3>
                 <p class="preco">R$ <?php echo $value['preco']; ?>,00</p>
@@ -212,9 +118,7 @@ if(isset($adicionar)){
         botao.addEventListener('click', () => {
             botoes.forEach(b => b.classList.remove('ativo'));
             botao.classList.add('ativo');
-
             const categoria = botao.dataset.categoria;
-
             cards.forEach(card => {
                 if (categoria === 'todos' || card.dataset.categoria === categoria) {
                     card.style.display = '';
