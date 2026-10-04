@@ -13,29 +13,7 @@ $consulta = "SELECT * FROM usuarios WHERE Email = '$logado'";
 $resultado = banco($server, $user, $password, $db, $consulta);
 $usuario = $resultado->fetch_assoc();
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finalizar Compra · Alpha</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="topo">
-    <div class="topo-conteudo">
-        <h1 class="logo">ALPHA</h1>
-        <p class="slogan">Finalizar compra</p>
-
-        <nav class="menu">
-            <a href="index.php">Vitrine</a>
-            <a href="carrinho.php">Carrinho</a>
-            <a href="minhasCompras.php">Minhas Compras</a>
-            <a href="sair.php">Sair</a>
-        </nav>
-    </div>
-</header>
+<?php include "header.php"; ?>
 
 <main class="conteudo">
     <section class="painel">
@@ -89,9 +67,4 @@ $usuario = $resultado->fetch_assoc();
     </section>
 </main>
 
-<footer class="rodape">
-    <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
-</footer>
-
-</body>
-</html>
+<?php include "footer.php"; ?>

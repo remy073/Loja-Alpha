@@ -6,29 +6,7 @@ $sessao = "nao";
 if(isset($_SESSION['login'])) $sessao = $_SESSION['login'];
 teste_login($sessao);
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compra Finalizada · Alpha</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="topo">
-    <div class="topo-conteudo">
-        <h1 class="logo">ALPHA</h1>
-        <p class="slogan">Pedido confirmado</p>
-
-        <nav class="menu">
-            <a href="index.php">Vitrine</a>
-            <a href="carrinho.php">Carrinho</a>
-            <a href="minhasCompras.php">Minhas Compras</a>
-            <a href="sair.php">Sair</a>
-        </nav>
-    </div>
-</header>
+<?php include "header.php"; ?>
 
 <main class="conteudo">
     <section class="painel painel-estreito sucesso">
@@ -38,14 +16,9 @@ teste_login($sessao);
 
         <div class="painel-acoes">
             <a class="botao destaque" href="index.php">Voltar para a loja</a>
-            <a class="botao" href="sair.php">Sair</a>
+            <a class="botao" href="minhasCompras.php">Minhas compras</a>
         </div>
     </section>
 </main>
 
-<footer class="rodape">
-    <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
-</footer>
-
-</body>
-</html>
+<?php include "footer.php"; ?>

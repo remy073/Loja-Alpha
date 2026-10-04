@@ -12,29 +12,7 @@ $logado = $_SESSION['email'];
 $consulta = "SELECT * FROM vendas WHERE Email = '$logado' ORDER BY Id DESC";
 $resultado = banco($server, $user, $password, $db, $consulta);
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minhas Compras · Alpha</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="topo">
-    <div class="topo-conteudo">
-        <h1 class="logo">ALPHA</h1>
-        <p class="slogan">Minhas compras</p>
-
-        <nav class="menu">
-            <a href="index.php">Vitrine</a>
-            <a href="carrinho.php">Carrinho</a>
-            <a href="minhasCompras.php" class="ativo">Minhas Compras</a>
-            <a href="sair.php">Sair</a>
-        </nav>
-    </div>
-</header>
+<?php include "header.php"; ?>
 
 <main class="conteudo">
     <section class="painel">
@@ -69,9 +47,4 @@ $resultado = banco($server, $user, $password, $db, $consulta);
     </section>
 </main>
 
-<footer class="rodape">
-    <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
-</footer>
-
-</body>
-</html>
+<?php include "footer.php"; ?>

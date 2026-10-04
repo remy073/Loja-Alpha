@@ -9,35 +9,7 @@ if(isset($remover)){
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carrinho · Alpha</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="topo">
-    <div class="topo-conteudo">
-        <h1 class="logo">ALPHA</h1>
-        <p class="slogan">Seu carrinho</p>
-
-        <nav class="menu">
-            <a href="index.php">Vitrine</a>
-            <a href="carrinho.php" class="ativo">Carrinho</a>
-
-            <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
-                <a href="minhasCompras.php">Minhas Compras</a>
-                <a href="sair.php">Sair</a>
-            <?php }else{ ?>
-                <a href="login.php">Login</a>
-                <a href="formulario.php">Cadastro</a>
-            <?php } ?>
-        </nav>
-    </div>
-</header>
+<?php include "header.php"; ?>
 
 <main class="conteudo">
     <section class="painel">
@@ -79,9 +51,4 @@ if(isset($remover)){
     </section>
 </main>
 
-<footer class="rodape">
-    <p>Reilly &amp; Gabriel &copy; <?php echo date('Y'); ?> — Projeto Integrador</p>
-</footer>
-
-</body>
-</html>
+<?php include "footer.php"; ?>
