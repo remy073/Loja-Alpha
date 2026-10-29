@@ -6,11 +6,11 @@
 <title>Alpha · Loja Virtual</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@400;700&family=Anton&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
-
 
 
 <!-- HEADER PRINCIPAL -->
@@ -27,10 +27,14 @@
             <a href="index.php#produtos">Produtos</a>
         </nav>
 
-        <form class="header-busca" onsubmit="event.preventDefault();">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="campoBusca" placeholder="O que você está procurando?"/>
-        </form>
+        <!-- BUSCA DINÂMICA -->
+        <div class="header-busca-wrapper">
+            <form class="header-busca" onsubmit="event.preventDefault();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="campoBusca" placeholder="O que você está procurando?" autocomplete="off"/>
+            </form>
+            <div class="busca-resultados" id="buscaResultados"></div>
+        </div>
 
         <div class="header-acoes">
             <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
@@ -48,8 +52,15 @@
 
             <a href="carrinho.php" class="header-icone header-carrinho" title="Carrinho">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                <?php if(isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0){ ?>
-                    <span class="carrinho-badge"><?php echo count($_SESSION['carrinho']); ?></span>
+                <?php
+                
+                if(isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0){
+                    $qtdTotal = 0;
+                    foreach($_SESSION['carrinho'] as $itemCarrinho){
+                        $qtdTotal += $itemCarrinho['quantidade'];
+                    }
+                ?>
+                    <span class="carrinho-badge"><?php echo $qtdTotal; ?></span>
                 <?php } ?>
             </a>
         </div>

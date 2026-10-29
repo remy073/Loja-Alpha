@@ -43,7 +43,7 @@ function form($action,$var1,$var2,$var3,$var4,$var5,$var6,$var7,$var8,$b1,$b2,$b
     }
     if(isset($var2)){
         echo "<label for='$var2' class='incluir'>$var2:</label>";
-        echo "<input type='text' name='$var2'/><br/>";
+        echo "<input type='password' name='$var2'/><br/>";
     }
     if(isset($var3)){
         echo "<label for='$var3' class='incluir'>$var3:</label>";

@@ -3,6 +3,7 @@ session_start();
 extract($_GET);
 
 $itens = [
+    // ROUPAS
     ['imagem'=>'img/camisabs.webp',    'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Branca',  'categoria'=>'roupas',      'badge'=>null],
     ['imagem'=>'img/camisabs2.webp',   'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Preta',   'categoria'=>'roupas',      'badge'=>'Novo'],
     ['imagem'=>'img/shortbsblack.webp','preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Preta',  'categoria'=>'roupas',      'badge'=>null],
@@ -20,8 +21,9 @@ $itens = [
     ['imagem'=>'img/cafeina.webp',     'preco'=>99,  'nome'=>'Thermo Flame Cafeína Black Skull',      'categoria'=>'suplementos', 'badge'=>'Novo']
 ];
 
-if(isset($adicionar)){
-    $idProduto = (int) $adicionar;
+// COMPRAR AGORA 
+if(isset($comprar)){
+    $idProduto = (int) $comprar;
     if(isset($itens[$idProduto])){
         if(isset($_SESSION['carrinho'][$idProduto])){
             $_SESSION['carrinho'][$idProduto]['quantidade']++;
@@ -32,7 +34,7 @@ if(isset($adicionar)){
                 'preco'      => $itens[$idProduto]['preco']
             ];
         }
-        header('Location: carrinho.php');
+        header('Location: finalizar.php');
         exit;
     }
 }
@@ -75,64 +77,43 @@ if(isset($adicionar)){
 <main class="vitrine" id="produtos">
     <div class="vitrine-cabecalho">
         <h2 class="vitrine-titulo">Nossos Produtos</h2>
-        <a href="#" class="vitrine-ver-todos">Ver todos →</a>
     </div>
 
     <section class="produtos" id="listaProdutos">
         <?php foreach($itens as $key => $value){ ?>
             <article class="produto" data-categoria="<?php echo $value['categoria']; ?>">
+
                 <?php if(!empty($value['badge'])){ ?>
                     <span class="badge"><?php echo $value['badge']; ?></span>
                 <?php } ?>
-                <div class="produto-imagem">
+
+                <a href="produto.php?id=<?php echo $key; ?>" class="produto-imagem" title="Ver detalhes">
                     <img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['nome']; ?>" loading="lazy">
-                </div>
+                </a>
+
                 <span class="produto-categoria"><?php echo ucfirst($value['categoria']); ?></span>
-                <h3><?php echo $value['nome']; ?></h3>
+                <h3>
+                    <a href="produto.php?id=<?php echo $key; ?>" class="produto-link-titulo" title="Ver detalhes">
+                        <?php echo $value['nome']; ?>
+                    </a>
+                </h3>
                 <p class="preco">R$ <?php echo $value['preco']; ?>,00</p>
-                <a class="botao" href="?adicionar=<?php echo $key; ?>">Adicionar ao carrinho</a>
+
+                <div class="produto-acoes">
+                    <button class="botao botao-carrinho"
+                            data-id="<?php echo $key; ?>"
+                            data-nome="<?php echo $value['nome']; ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        Adicionar
+                    </button>
+                    <a class="botao botao-comprar" href="?comprar=<?php echo $key; ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        Comprar
+                    </a>
+                </div>
             </article>
         <?php } ?>
     </section>
 </main>
-
-<script>
-    const botoesCategoria = document.querySelectorAll('.categoria');
-    const cards           = document.querySelectorAll('.produto');
-
-    botoesCategoria.forEach(botao => {
-        botao.addEventListener('click', () => {
-            botoesCategoria.forEach(b => b.classList.remove('ativo'));
-            botao.classList.add('ativo');
-            const categoria = botao.dataset.categoria;
-            cards.forEach(card => {
-                if (categoria === 'todos' || card.dataset.categoria === categoria) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    const campoBusca = document.getElementById('campoBusca');
-    if (campoBusca) {
-        campoBusca.addEventListener('input', () => {
-            const texto = campoBusca.value.toLowerCase().trim();
-            const categoriaAtiva = document.querySelector('.categoria.ativo').dataset.categoria;
-            cards.forEach(card => {
-                const nomeProduto = card.querySelector('h3').textContent.toLowerCase();
-                const categoria   = card.dataset.categoria;
-                const passaBusca     = texto === '' || nomeProduto.includes(texto);
-                const passaCategoria = categoriaAtiva === 'todos' || categoria === categoriaAtiva;
-                if (passaBusca && passaCategoria) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    }
-</script>
 
 <?php include "footer.php"; ?>

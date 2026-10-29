@@ -31,7 +31,7 @@ $resultado = banco($server, $user, $password, $db, $consulta);
             echo "<h4>Pedido #".$linha['Id']."</h4>";
             echo "<p><strong>Produtos:</strong> ".$linha['Produtos']."</p>";
             echo "<p><strong>Endereço:</strong> ".$linha['Rua'].", ".$linha['Numero']." — ".$linha['Bairro'].", ".$linha['Cidade']."/".$linha['Estado']."</p>";
-            echo "<p><strong>Total:</strong> R$ ".$linha['Total']."</p>";
+            echo "<p><strong>Total:</strong> R$ ".number_format($linha['Total'], 2, ',', '.')."</p>";
             echo "</div>";
             echo "</div>";
         }
