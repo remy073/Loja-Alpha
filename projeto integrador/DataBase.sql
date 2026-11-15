@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS loja4;
 
 CREATE DATABASE loja4
@@ -17,7 +16,8 @@ CREATE TABLE usuarios (
     Cidade VARCHAR(100) NOT NULL,
     Bairro VARCHAR(100) NOT NULL,
     Rua VARCHAR(150) NOT NULL,
-    Numero VARCHAR(20) NOT NULL
+    Numero VARCHAR(20) NOT NULL,
+    Token_Recuperacao VARCHAR(255) NULL
 );
 
 
