@@ -3,12 +3,12 @@ session_start();
 extract($_GET);
 
 $itens = [
-    // ROUPAS
+    // Roupas
     ['imagem'=>'img/camisabs.webp',    'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Branca',  'categoria'=>'roupas',      'badge'=>null,          'desc'=>'Camisa de compressão com tecido respirável de alta performance. Modelagem justa que acompanha o corpo, ideal para treinos intensos. Logo Black Skull aplicado nas costas.'],
     ['imagem'=>'img/camisabs2.webp',   'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Preta',   'categoria'=>'roupas',      'badge'=>'Novo',        'desc'=>'Versão preta da camisa de compressão oficial Black Skull. Tecido com elasticidade e secagem rápida, perfeita para musculação e crossfit.'],
     ['imagem'=>'img/shortbsblack.webp','preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Preta',  'categoria'=>'roupas',      'badge'=>null,          'desc'=>'Bermuda de compressão preta com elástico na cintura e cordão de ajuste. Tecido leve e resistente, ideal para treinos de alta intensidade.'],
     ['imagem'=>'img/shortbsgray.webp', 'preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Cinza',  'categoria'=>'roupas',      'badge'=>null,          'desc'=>'Bermuda de compressão cinza com logo Black Skull. Conforto e mobilidade para o dia a dia ou para a academia.'],
-    // ACESSÓRIOS
+    // Acessórios
     ['imagem'=>'img/copobs.webp',      'preco'=>49,  'nome'=>'Coqueteleira Black Skull',              'categoria'=>'acessorios',  'badge'=>'Top',         'desc'=>'Coqueteleira oficial Black Skull com capacidade para 700ml. Tampa com trava e mola misturadora para shakes e suplementos.'],
     ['imagem'=>'img/mochila.webp',     'preco'=>349, 'nome'=>'Mochila Black Skull Oficial Clio 50L',  'categoria'=>'acessorios',  'badge'=>null,          'desc'=>'Mochila tática Black Skull com 50 litros de capacidade. Diversos compartimentos, tecido resistente e patches bordados. Ideal para treino e viagem.'],
     ['imagem'=>'img/bone.webp',        'preco'=>89,  'nome'=>'Boné Black Skull Cinza',                'categoria'=>'acessorios',  'badge'=>null,          'desc'=>'Boné Black Skull cinza com aba curva e ajuste traseiro. Logo bordado em destaque. Estilo e proteção para o dia a dia.'],
@@ -16,7 +16,7 @@ $itens = [
     ['imagem'=>'img/tenisbranco.webp', 'preco'=>299, 'nome'=>'Tênis Black Skull Urban Camo Branco',   'categoria'=>'acessorios',  'badge'=>'Novo',        'desc'=>'Tênis Black Skull Urban Camo na versão branca. Solado em borracha, cabedal em camurça e detalhes em camouflage. Conforto e estilo urbano.'],
     ['imagem'=>'img/tenispreto.webp',  'preco'=>299, 'nome'=>'Tênis Black Skull Urban Camo Cinza',    'categoria'=>'acessorios',  'badge'=>null,          'desc'=>'Tênis Black Skull Urban Camo na versão cinza. Mesma construção do modelo branco, com acabamento em tons escuros para o dia a dia.'],
     ['imagem'=>'img/americatenis.webp','preco'=>349, 'nome'=>'Tênis Black Skull Lifter Ipo American', 'categoria'=>'acessorios',  'badge'=>null,          'desc'=>'Tênis Black Skull Lifter Ipo American com bandeira dos EUA. Estrutura reforçada para treinos de força e uso diário.'],
-    // SUPLEMENTOS
+    // Suplementos
     ['imagem'=>'img/creatina.webp',    'preco'=>129, 'nome'=>'Creatina Monohidratada Black Skull',    'categoria'=>'suplementos', 'badge'=>'Mais vendido','desc'=>'Creatina monohidratada Black Skull em pó (300g). Auxilia no ganho de força e massa muscular. Sabor neutro, ideal para misturar com shakes.'],
     ['imagem'=>'img/pretreino.webp',   'preco'=>149, 'nome'=>'Pré-Treino B.O.P.E Black Skull',        'categoria'=>'suplementos', 'badge'=>null,          'desc'=>'Pré-treino B.O.P.E Black Skull (150g). Fórmula com cafeína e beta-alanina para mais energia, foco e resistência nos treinos.'],
     ['imagem'=>'img/whey.webp',        'preco'=>199, 'nome'=>'Whey 100% Black Skull',                 'categoria'=>'suplementos', 'badge'=>'Mais vendido','desc'=>'Whey protein 100% Black Skull (837g). Alto teor de proteína por dose, sabor baunilha. Auxilia na recuperação muscular e ganho de massa.'],
@@ -34,7 +34,7 @@ if(!isset($itens[$id])){
 
 $produto = $itens[$id];
 
-// COMPRAR AGORA 
+// Comprar agora (adiciona ao carrinho e redireciona para finalizar.php) 
 if(isset($comprar)){
     if(isset($_SESSION['carrinho'][$id])){
         $_SESSION['carrinho'][$id]['quantidade']++;
@@ -51,6 +51,8 @@ if(isset($comprar)){
 ?>
 <?php include "header.php"; ?>
 
+<!-- Conteúdo principal da página de produto, aqui fica todo o conteúdo de cada produto, desde informações até opções de compra -->
+
 <main class="conteudo conteudo-produto">
 
     <!-- BREADCRUMB oq diabos é isso kkkak -->
@@ -64,7 +66,7 @@ if(isset($comprar)){
 
     <section class="produto-detalhe">
 
-        <!-- COLUNA ESQUERDA: IMAGEM -->
+        <!-- Coluna esquerda: Imagem -->
         <div class="produto-detalhe-imagem">
             <img src="<?php echo $produto['imagem']; ?>" alt="<?php echo $produto['nome']; ?>">
             <?php if(!empty($produto['badge'])){ ?>
@@ -72,7 +74,7 @@ if(isset($comprar)){
             <?php } ?>
         </div>
 
-        <!-- COLUNA DIREITA: INFOS -->
+        <!-- Coluna direita: Informações do produto -->
         <div class="produto-detalhe-info">
 
             <span class="produto-categoria"><?php echo ucfirst($produto['categoria']); ?></span>

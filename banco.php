@@ -5,7 +5,7 @@ require_once "app/DLL.php";
 
 extract($_POST);
 
-// CADASTRO
+// Cadastro
 if(isset($Cadastrar)){
     $consulta = "INSERT INTO usuarios (Id, Nome, Email, Senha, Estado, Cidade, Bairro, Rua, Numero) 
                  VALUES (NULL, '$nome', '$email', '$senha', '$estado', '$cidade', '$bairro', '$rua', '$numero')";
@@ -14,7 +14,7 @@ if(isset($Cadastrar)){
     exit();
 }
 
-// LOGIN
+// Login
 if(isset($Entrar)){
     $consulta = "SELECT * FROM usuarios WHERE Email = '$email' and Senha = '$senha'";
     $resultado = banco($server, $user, $password, $db, $consulta);
@@ -31,7 +31,7 @@ if(isset($Entrar)){
     }
 }
 
-// FINALIZAR VENDA
+// Finalizar Compra
 if(isset($Finalizar)){
     $sessao = "nao";
     if(isset($_SESSION['login'])) $sessao = $_SESSION['login'];

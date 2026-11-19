@@ -9,21 +9,21 @@ $imagens = [
     'img/pretreino.webp', 'img/whey.webp', 'img/cafeina.webp'
 ];
 
-// REMOVER
+// Remover item do carrinho
 if(isset($remover)){
     $idProduto = (int) $remover;
     unset($_SESSION['carrinho'][$idProduto]);
     header('Location: carrinho.php'); exit;
 }
 
-// ADICIONAR +1
+// Adicionar +1
 if(isset($mais)){
     $idProduto = (int) $mais;
     $_SESSION['carrinho'][$idProduto]['quantidade']++;
     header('Location: carrinho.php'); exit;
 }
 
-// SUBTRAIR -1
+// Subtrair -1
 if(isset($menos)){
     $idProduto = (int) $menos;
     if($_SESSION['carrinho'][$idProduto]['quantidade'] > 1){

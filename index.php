@@ -3,7 +3,7 @@ session_start();
 extract($_GET);
 
 $itens = [
-    // ROUPAS
+    // Itens da loja
     ['imagem'=>'img/camisabs.webp',    'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Branca',  'categoria'=>'roupas',      'badge'=>null],
     ['imagem'=>'img/camisabs2.webp',   'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Preta',   'categoria'=>'roupas',      'badge'=>'Novo'],
     ['imagem'=>'img/shortbsblack.webp','preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Preta',  'categoria'=>'roupas',      'badge'=>null],
@@ -21,7 +21,7 @@ $itens = [
     ['imagem'=>'img/cafeina.webp',     'preco'=>99,  'nome'=>'Thermo Flame Cafeína Black Skull',      'categoria'=>'suplementos', 'badge'=>'Novo']
 ];
 
-// COMPRAR AGORA 
+// Comprar agora (adiciona ao carrinho e redireciona para finalizar.php)
 if(isset($comprar)){
     $idProduto = (int) $comprar;
     if(isset($itens[$idProduto])){

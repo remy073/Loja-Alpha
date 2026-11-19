@@ -11,7 +11,7 @@ require_once "app/DLL.php";
 
         <form action="banco.php" method="post" class="formulario">
             
-            <!-- DADOS PESSOAIS -->
+            <!-- Dados Pessoais -->
             <div class="campo">
                 <label for="nome">Nome completo</label>
                 <input type="text" name="nome" id="nome" required placeholder="Digite seu nome" />
@@ -27,7 +27,7 @@ require_once "app/DLL.php";
                 <input type="password" name="senha" id="senha" required placeholder="Crie uma senha" />
             </div>
 
-            <!-- ENDEREÇO -->
+            <!-- Endereço -->
             <div class="campo">
                 <label for="estado">Estado (UF)</label>
                 <input type="text" name="estado" id="estado" required placeholder="Ex: BA" maxlength="2" />
@@ -53,7 +53,7 @@ require_once "app/DLL.php";
                 <input type="text" name="numero" id="numero" required placeholder="Ex: 123" />
             </div>
 
-            <!-- BOTÃO -->
+            <!-- Botão-->
             <div class="acoes mt-40">
                 <input type="submit" name="Cadastrar" value="Cadastrar" />
             </div>

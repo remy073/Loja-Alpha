@@ -46,7 +46,7 @@ $imagens = [
 
             <form action="banco.php" method="post" class="formulario">
 
-                <!-- DADOS ESCONDIDOS DO ENDEREÇO (pra o banco salvar) -->
+                <!-- Dados escondidos no formulário (pra o banco salvar) -->
                 <input type="hidden" name="estado" value="<?php echo $usuario['Estado']; ?>">
                 <input type="hidden" name="cidade" value="<?php echo $usuario['Cidade']; ?>">
                 <input type="hidden" name="bairro" value="<?php echo $usuario['Bairro']; ?>">
