@@ -30,7 +30,7 @@ CREATE TABLE vendas (
     Numero VARCHAR(20) NOT NULL,
     Produtos TEXT NOT NULL,
     Total DECIMAL(10,2) NOT NULL,
-    Pagamento VARCHAR(20) NOT NULL DEFAULT 'pix', -- NOVA COLUNA AQUI
+    Pagamento VARCHAR(20) NOT NULL DEFAULT 'pix', 
 
     CONSTRAINT fk_vendas_usuario
         FOREIGN KEY (Email) REFERENCES usuarios(Email)
