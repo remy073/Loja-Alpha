@@ -27,16 +27,10 @@ require_once "app/DLL.php";
 
         <div class="painel-rodape">
             <p>Não tem cadastro? <a href="formulario.php">Criar conta</a></p>
-            <p><a href="recuperar.php">Esqueci minha senha</a></p> <!-- Adicione esta linha -->
+            <p><a href="recuperar.php">Esqueci minha senha</a></p>
             <p><a href="index.php">← Voltar para a loja</a></p>
         </div>
     </section>
 </main>
-
-<style>
-.header-logo svg {
-    display: none !important;
-}
-</style>
 
 <?php include "footer.php"; ?>

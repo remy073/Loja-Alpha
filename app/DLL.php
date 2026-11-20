@@ -78,4 +78,18 @@ function form($action,$var1,$var2,$var3,$var4,$var5,$var6,$var7,$var8,$b1,$b2,$b
     echo "</fieldset>";
 }
 
+function verifica_admin($server, $user, $password, $db, $email) {
+    $consulta = "SELECT admin FROM usuarios WHERE Email = '$email'";
+    $resultado = banco($server, $user, $password, $db, $consulta);
+    
+    if ($linha = $resultado->fetch_assoc()) {
+        if ($linha['admin'] == 1) {
+            return true;
+        }
+    }
+    return false;
+}
+
 ?>
+
+

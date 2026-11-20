@@ -1,25 +1,16 @@
 <?php
 session_start();
+include "app/cons.php";
+require_once "app/DLL.php";
 extract($_GET);
 
-$itens = [
-    // Itens da loja
-    ['imagem'=>'img/camisabs.webp',    'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Branca',  'categoria'=>'roupas',      'badge'=>null],
-    ['imagem'=>'img/camisabs2.webp',   'preco'=>89,  'nome'=>'Camisa Compressão Black Skull Preta',   'categoria'=>'roupas',      'badge'=>'Novo'],
-    ['imagem'=>'img/shortbsblack.webp','preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Preta',  'categoria'=>'roupas',      'badge'=>null],
-    ['imagem'=>'img/shortbsgray.webp', 'preco'=>79,  'nome'=>'Bermuda Compressão Black Skull Cinza',  'categoria'=>'roupas',      'badge'=>null],
-    ['imagem'=>'img/copobs.webp',      'preco'=>49,  'nome'=>'Coqueteleira Black Skull',              'categoria'=>'acessorios',  'badge'=>'Top'],
-    ['imagem'=>'img/mochila.webp',     'preco'=>349, 'nome'=>'Mochila Black Skull Oficial Clio 50L',  'categoria'=>'acessorios',  'badge'=>null],
-    ['imagem'=>'img/bone.webp',        'preco'=>89,  'nome'=>'Boné Black Skull Cinza',                'categoria'=>'acessorios',  'badge'=>null],
-    ['imagem'=>'img/bolsabs.webp',     'preco'=>149, 'nome'=>'Bolsa Esportiva Black Skull',           'categoria'=>'acessorios',  'badge'=>null],
-    ['imagem'=>'img/tenisbranco.webp', 'preco'=>299, 'nome'=>'Tênis Black Skull Urban Camo Branco',   'categoria'=>'acessorios',  'badge'=>'Novo'],
-    ['imagem'=>'img/tenispreto.webp',  'preco'=>299, 'nome'=>'Tênis Black Skull Urban Camo Cinza',    'categoria'=>'acessorios',  'badge'=>null],
-    ['imagem'=>'img/americatenis.webp','preco'=>349, 'nome'=>'Tênis Black Skull Lifter Ipo American', 'categoria'=>'acessorios',  'badge'=>null],
-    ['imagem'=>'img/creatina.webp',    'preco'=>129, 'nome'=>'Creatina Monohidratada Black Skull',    'categoria'=>'suplementos', 'badge'=>'Mais vendido'],
-    ['imagem'=>'img/pretreino.webp',   'preco'=>149, 'nome'=>'Pré-Treino B.O.P.E Black Skull',        'categoria'=>'suplementos', 'badge'=>null],
-    ['imagem'=>'img/whey.webp',        'preco'=>199, 'nome'=>'Whey 100% Black Skull',                 'categoria'=>'suplementos', 'badge'=>'Mais vendido'],
-    ['imagem'=>'img/cafeina.webp',     'preco'=>99,  'nome'=>'Thermo Flame Cafeína Black Skull',      'categoria'=>'suplementos', 'badge'=>'Novo']
-];
+// Busca os produtos no banco de dados
+$consulta = "SELECT * FROM produtos ORDER BY Id ASC";
+$resultado = banco($server, $user, $password, $db, $consulta);
+$itens = [];
+while($linha = $resultado->fetch_assoc()){
+    $itens[$linha['Id']] = $linha;
+}
 
 // Comprar agora (adiciona ao carrinho e redireciona para finalizar.php)
 if(isset($comprar)){
@@ -30,8 +21,8 @@ if(isset($comprar)){
         }else{
             $_SESSION['carrinho'][$idProduto] = [
                 'quantidade' => 1,
-                'nome'       => $itens[$idProduto]['nome'],
-                'preco'      => $itens[$idProduto]['preco']
+                'nome'       => $itens[$idProduto]['Nome'],
+                'preco'      => $itens[$idProduto]['Preco']
             ];
         }
         header('Location: finalizar.php');
@@ -81,28 +72,28 @@ if(isset($comprar)){
 
     <section class="produtos" id="listaProdutos">
         <?php foreach($itens as $key => $value){ ?>
-            <article class="produto" data-categoria="<?php echo $value['categoria']; ?>">
+            <article class="produto" data-categoria="<?php echo $value['Categoria']; ?>">
 
-                <?php if(!empty($value['badge'])){ ?>
-                    <span class="badge"><?php echo $value['badge']; ?></span>
+                <?php if(!empty($value['Badge'])){ ?>
+                    <span class="badge"><?php echo $value['Badge']; ?></span>
                 <?php } ?>
 
                 <a href="produto.php?id=<?php echo $key; ?>" class="produto-imagem" title="Ver detalhes">
-                    <img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['nome']; ?>" loading="lazy">
+                    <img src="<?php echo $value['Imagem']; ?>" alt="<?php echo $value['Nome']; ?>" loading="lazy">
                 </a>
 
-                <span class="produto-categoria"><?php echo ucfirst($value['categoria']); ?></span>
+                <span class="produto-categoria"><?php echo ucfirst($value['Categoria']); ?></span>
                 <h3>
                     <a href="produto.php?id=<?php echo $key; ?>" class="produto-link-titulo" title="Ver detalhes">
-                        <?php echo $value['nome']; ?>
+                        <?php echo $value['Nome']; ?>
                     </a>
                 </h3>
-                <p class="preco">R$ <?php echo $value['preco']; ?>,00</p>
+                <p class="preco">R$ <?php echo number_format($value['Preco'], 2, ',', '.'); ?></p>
 
                 <div class="produto-acoes">
                     <button class="botao botao-carrinho"
                             data-id="<?php echo $key; ?>"
-                            data-nome="<?php echo $value['nome']; ?>">
+                            data-nome="<?php echo $value['Nome']; ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                         Adicionar
                     </button>

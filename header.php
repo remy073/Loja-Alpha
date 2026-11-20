@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION)) { session_start(); }
+include "app/cons.php";
+require_once "app/DLL.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,13 +18,11 @@
 </head>
 <body>
 
-
 <!-- Header principal -->
 <header class="header">
     <div class="header-conteudo">
 
         <a href="index.php" class="header-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 3 2 6 4 8v3h6v-3c2-2 4-5 4-8 0-4-3-7-7-7zm-2 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-2 3l1 2h-2l1-2z"/></svg>
             <span>ALPHA</span>
         </a>
 
@@ -35,6 +39,13 @@
             </form>
             <div class="busca-resultados" id="buscaResultados"></div>
         </div>
+        <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"): ?>
+        <?php if(verifica_admin($server, $user, $password, $db, $_SESSION['email'])): ?>
+        <a href="admin.php" class="header-icone" title="Painel de Administração" style="color: var(--destaque);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </a>
+        <?php endif; ?>
+        <?php endif; ?>
 
         <div class="header-acoes">
             <?php if(isset($_SESSION['login']) && $_SESSION['login'] == "ok"){ ?>
@@ -53,7 +64,6 @@
             <a href="carrinho.php" class="header-icone header-carrinho" title="Carrinho">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                 <?php
-                
                 if(isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0){
                     $qtdTotal = 0;
                     foreach($_SESSION['carrinho'] as $itemCarrinho){
@@ -66,4 +76,5 @@
         </div>
 
     </div>
+    
 </header>

@@ -7,6 +7,16 @@ extract($_POST);
 
 // Cadastro
 if(isset($Cadastrar)){
+    // Verifica se o e-mail já existe
+    $check = "SELECT Id FROM usuarios WHERE Email = '$email'";
+    $res_check = banco($server, $user, $password, $db, $check);
+    
+    if($res_check->fetch_assoc()){
+        // E-mail já cadastrado, volta com aviso
+        header("Location: formulario.php?erro=email");
+        exit();
+    }
+
     $consulta = "INSERT INTO usuarios (Id, Nome, Email, Senha, Estado, Cidade, Bairro, Rua, Numero) 
                  VALUES (NULL, '$nome', '$email', '$senha', '$estado', '$cidade', '$bairro', '$rua', '$numero')";
     banco($server, $user, $password, $db, $consulta);
@@ -20,8 +30,9 @@ if(isset($Entrar)){
     $resultado = banco($server, $user, $password, $db, $consulta);
 
     if($linha = $resultado->fetch_assoc()){
-        $_SESSION['email'] = $email;
-        $_SESSION['senha'] = $senha;
+        // Pega os dados do banco, não do POST (evita problemas com espaços)
+        $_SESSION['email'] = $linha['Email'];
+        $_SESSION['senha'] = $linha['Senha'];
         $_SESSION['login'] = "ok";
         header("Location: finalizar.php");
         exit();
@@ -41,6 +52,9 @@ if(isset($Finalizar)){
     $total = 0;
     $produtos = "";
 
+    // Se por algum motivo o pagamento não vier, define 'pix' como padrão
+    $pagamento = isset($pagamento) ? $pagamento : 'pix';
+
     if(isset($_SESSION['carrinho'])){
         foreach($_SESSION['carrinho'] as $value){
             $subtotal = $value['quantidade'] * $value['preco'];
@@ -49,8 +63,8 @@ if(isset($Finalizar)){
         }
     }
 
-    $consulta = "INSERT INTO vendas (Id, Email, Estado, Cidade, Bairro, Rua, Numero, Produtos, Total) 
-                 VALUES (NULL, '$email', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$produtos', '$total')";
+    $consulta = "INSERT INTO vendas (Id, Email, Estado, Cidade, Bairro, Rua, Numero, Produtos, Total, Pagamento) 
+                 VALUES (NULL, '$email', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$produtos', '$total', '$pagamento')";
     banco($server, $user, $password, $db, $consulta);
 
     unset($_SESSION['carrinho']);

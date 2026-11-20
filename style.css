@@ -105,9 +105,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0;
     transition: var(--transicao);
 }
-.header-logo svg { color: var(--destaque); }
 .header-logo:hover { color: var(--destaque); transform: scale(1.03); }
-
 .header-menu { display: flex; gap: 4px; flex-shrink: 0; }
 .header-menu a {
     color: var(--texto-suave);
@@ -1298,4 +1296,107 @@ h1, h2, h3, h4, h5, h6 {
 
 #produtos {
     scroll-margin-top: 100px;
+}
+
+/* --- Lista de Produtos no Admin (com botões Editar/Remover) --- */
+.lista-admin-produtos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.admin-produto-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--bg-3);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    padding: 15px;
+    transition: var(--transicao);
+}
+
+.admin-produto-item:hover {
+    border-color: var(--borda-forte);
+}
+
+.admin-produto-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px;
+    flex-shrink: 0;
+}
+
+.admin-produto-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.admin-produto-info strong {
+    font-size: 14px;
+    color: var(--texto);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-produto-info span {
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+.admin-produto-botoes {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.admin-produto-botoes .botao {
+    padding: 8px 16px;
+    font-size: 11px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.admin-produto-botoes .botao.editar {
+    background: transparent;
+    border: 1px solid var(--borda-forte);
+    color: var(--texto);
+}
+
+.admin-produto-botoes .botao.editar:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.admin-produto-botoes .botao.remover {
+    background: transparent;
+    border: 1px solid var(--destaque);
+    color: var(--destaque);
+}
+
+.admin-produto-botoes .botao.remover:hover {
+    background: var(--destaque);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .admin-produto-item {
+        flex-wrap: wrap;
+    }
+    .admin-produto-info {
+        min-width: 100%;
+    }
+    .admin-produto-botoes {
+        width: 100%;
+    }
+    .admin-produto-botoes .botao {
+        flex: 1;
+    }
 }

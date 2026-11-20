@@ -13,6 +13,11 @@ $consulta = "SELECT * FROM usuarios WHERE Email = '$logado'";
 $resultado = banco($server, $user, $password, $db, $consulta);
 $usuario = $resultado->fetch_assoc();
 
+if(!$usuario){
+    header("Location: sair.php");
+    exit;
+}
+
 // botoes + e - dentro da tela de pagamento
 extract($_GET);
 if(isset($mais)){
@@ -28,13 +33,6 @@ if(isset($menos)){
     }
     header('Location: finalizar.php'); exit;
 }
-
-$imagens = [
-    'img/camisabs.webp', 'img/camisabs2.webp', 'img/shortbsblack.webp', 'img/shortbsgray.webp',
-    'img/copobs.webp', 'img/mochila.webp', 'img/bone.webp', 'img/bolsabs.webp',
-    'img/tenisbranco.webp', 'img/tenispreto.webp', 'img/americatenis.webp', 'img/creatina.webp',
-    'img/pretreino.webp', 'img/whey.webp', 'img/cafeina.webp'
-];
 ?>
 <?php include "header.php"; ?>
 
@@ -46,7 +44,7 @@ $imagens = [
 
             <form action="banco.php" method="post" class="formulario">
 
-                <!-- Dados escondidos no formulário (pra o banco salvar) -->
+                <!-- Dados escondidos do endereço (pra o banco salvar) -->
                 <input type="hidden" name="estado" value="<?php echo $usuario['Estado']; ?>">
                 <input type="hidden" name="cidade" value="<?php echo $usuario['Cidade']; ?>">
                 <input type="hidden" name="bairro" value="<?php echo $usuario['Bairro']; ?>">
@@ -61,13 +59,18 @@ $imagens = [
                     foreach($_SESSION['carrinho'] as $key => $value){
                         $subtotal = $value['quantidade'] * $value['preco'];
                         $total += $subtotal;
-                        $img = isset($imagens[$key]) ? $imagens[$key] : 'img/copobs.webp';
+                        
+                        // Busca a imagem do produto no banco de dados
+                        $consulta_img = "SELECT Imagem FROM produtos WHERE Id = $key";
+                        $res_img = banco($server, $user, $password, $db, $consulta_img);
+                        $linha_img = $res_img->fetch_assoc();
+                        $img = $linha_img ? $linha_img['Imagem'] : 'img/copobs.webp';
                         
                         echo "<div class='item-carrinho finalizar-item'>";
                         echo "  <img src='$img' class='item-carrinho-img'>";
                         echo "  <div class='item-carrinho-info'>";
                         echo "      <h4>".$value['nome']."</h4>";
-                        echo "      <p>R$ ".$value['preco'].",00</p>";
+                        echo "      <p>R$ ".number_format($value['preco'], 2, ',', '.')."</p>";
                         echo "  </div>";
                         
                         echo "  <div class='qtd-controle'>";
@@ -77,7 +80,7 @@ $imagens = [
                         echo "  </div>";
                         
                         echo "  <div class='item-carrinho-subtotal'>";
-                        echo "      <strong>R$ ".$subtotal.",00</strong>";
+                        echo "      <strong>R$ ".number_format($subtotal, 2, ',', '.')."</strong>";
                         echo "  </div>";
                         echo "</div>";
                     }
@@ -86,7 +89,7 @@ $imagens = [
 
                 <div class="total">
                     <span>Total a pagar</span>
-                    <strong>R$ <?php echo $total; ?>,00</strong>
+                    <strong>R$ <?php echo number_format($total, 2, ',', '.'); ?></strong>
                 </div>
 
                 <h3 class="form-secao-titulo mt-40">2. Forma de Pagamento</h3>

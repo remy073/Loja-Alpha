@@ -128,26 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const campoBusca = document.getElementById('campoBusca');
     const resultados = document.getElementById('buscaResultados');
 
-    // Lista de itens pra busca 
-    const itensBusca = [
-        { id: 0, nome: 'Camisa Compressão Black Skull Branca', img: 'img/camisabs.webp', preco: 89 },
-        { id: 1, nome: 'Camisa Compressão Black Skull Preta', img: 'img/camisabs2.webp', preco: 89 },
-        { id: 2, nome: 'Bermuda Compressão Black Skull Preta', img: 'img/shortbsblack.webp', preco: 79 },
-        { id: 3, nome: 'Bermuda Compressão Black Skull Cinza', img: 'img/shortbsgray.webp', preco: 79 },
-        { id: 4, nome: 'Coqueteleira Black Skull', img: 'img/copobs.webp', preco: 49 },
-        { id: 5, nome: 'Mochila Black Skull Oficial Clio 50L', img: 'img/mochila.webp', preco: 349 },
-        { id: 6, nome: 'Boné Black Skull Cinza', img: 'img/bone.webp', preco: 89 },
-        { id: 7, nome: 'Bolsa Esportiva Black Skull', img: 'img/bolsabs.webp', preco: 149 },
-        { id: 8, nome: 'Tênis Black Skull Urban Camo Branco', img: 'img/tenisbranco.webp', preco: 299 },
-        { id: 9, nome: 'Tênis Black Skull Urban Camo Cinza', img: 'img/tenispreto.webp', preco: 299 },
-        { id: 10, nome: 'Tênis Black Skull Lifter Ipo American', img: 'img/americatenis.webp', preco: 349 },
-        { id: 11, nome: 'Creatina Monohidratada Black Skull', img: 'img/creatina.webp', preco: 129 },
-        { id: 12, nome: 'Pré-Treino B.O.P.E Black Skull', img: 'img/pretreino.webp', preco: 149 },
-        { id: 13, nome: 'Whey 100% Black Skull', img: 'img/whey.webp', preco: 199 },
-        { id: 14, nome: 'Thermo Flame Cafeína Black Skull', img: 'img/cafeina.webp', preco: 99 }
-    ];
-
     if (campoBusca && resultados) {
+        let itensBusca = []; // Vai guardar os produtos do banco
+
+        // Busca a lista de produtos via AJAX
+        fetch('buscar_produtos.php')
+            .then(resp => resp.json())
+            .then(data => { itensBusca = data; })
+            .catch(err => console.error('Erro ao carregar produtos:', err));
+
         campoBusca.addEventListener('input', () => {
             const texto = campoBusca.value.toLowerCase().trim();
             resultados.innerHTML = '';
@@ -164,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="${item.img}" alt="${item.nome}">
                             <div>
                                 <span class="busca-nome">${item.nome}</span>
-                                <span class="busca-preco">R$ ${item.preco},00</span>
+                                <span class="busca-preco">R$ ${item.preco}</span>
                             </div>
                         `;
                         resultados.appendChild(link);

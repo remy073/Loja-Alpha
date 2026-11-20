@@ -26,11 +26,15 @@ $resultado = banco($server, $user, $password, $db, $consulta);
         while($linha = $resultado->fetch_assoc()){
             $temCompras = true;
 
+            // Deixa a primeira letra maiúscula (ex: Pix, Credito, Debito)
+            $forma_pagamento = ucfirst($linha['Pagamento']);
+
             echo "<div class='item'>";
             echo "<div class='item-info'>";
             echo "<h4>Pedido #".$linha['Id']."</h4>";
             echo "<p><strong>Produtos:</strong> ".$linha['Produtos']."</p>";
             echo "<p><strong>Endereço:</strong> ".$linha['Rua'].", ".$linha['Numero']." — ".$linha['Bairro'].", ".$linha['Cidade']."/".$linha['Estado']."</p>";
+            echo "<p><strong>Pagamento:</strong> ".$forma_pagamento."</p>";
             echo "<p><strong>Total:</strong> R$ ".number_format($linha['Total'], 2, ',', '.')."</p>";
             echo "</div>";
             echo "</div>";
