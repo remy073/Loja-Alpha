@@ -65,10 +65,6 @@ INSERT INTO vendas (Email, Estado, Cidade, Bairro, Rua, Numero, Produtos, Total,
  'Camisa Compressão Black Skull Branca | Quantidade: 1 | Preco: R$ 89,00; Coqueteleira Black Skull | Quantidade: 1 | Preco: R$ 49,00;',
  138.00, 'pix'),
 
-('gabriel@gmail.com', 'BA', 'Eunápolis', 'Centro',
- 'Rua das Flores', '260',
- 'Whey 100% Black Skull | Quantidade: 2 | Preco: R$ 398,00;',
- 398.00, 'credito'),
 
 ('ferreirareilly90@gmail.com', 'BA', 'Eunápolis', 'Alto da Boa Vista',
  'Reino Unido', '150',
