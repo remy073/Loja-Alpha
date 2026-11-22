@@ -11,7 +11,7 @@ require_once "app/DLL.php";
 
         <form action="banco.php" method="post" class="formulario">
             
-            <!-- Dados Pessoais -->
+            <!-- Dados Pessoais do Usuário -->
             <div class="campo">
                 <label for="nome">Nome completo</label>
                 <input type="text" name="nome" id="nome" required placeholder="Digite seu nome" />
