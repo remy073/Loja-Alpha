@@ -51,7 +51,7 @@ CREATE TABLE produtos (
 INSERT INTO usuarios (Nome, Email, Senha, Estado, Cidade, Bairro, Rua, Numero, Admin) VALUES
 ('Starke (Admin)',   'starke120hz@gmail.com', '12345', 'BA', 'Eunápolis',      'Centro',             'Rua Admin',        '1',   1),
 ('Gabriel Vieira',   'gabriel@gmail.com',     '12345', 'BA', 'Eunápolis',      'Centro',             'Rua das Flores',   '260', 0),
-('Reilly Ferreira',  'reilly@gmail.com',      '12345', 'BA', 'Eunápolis',      'Alto da Boa Vista',  'Reino Unido',      '150', 0),
+('Reilly Ferreira',  'ferreirareilly90@gmail.com',      '12345', 'BA', 'Eunápolis',      'Alto da Boa Vista',  'Reino Unido',      '150', 1),
 ('Dario Mattos',     'dario@gmail.com',       '12345', 'BA', 'Vitória',        'Centro',             'Av. Brasil',       '742', 0),
 ('Luis Felipe',      'luisfelipe@gmail.com',  '12345', 'SP', 'São Paulo',      'Vila Mariana',       'Rua Domingos',     '88',  0),
 ('Gabriella Suque',  'gabi@gmail.com',        '12345', 'RJ', 'Rio de Janeiro', 'Copacabana',         'Av. Atlântica',    '1020',0);
@@ -70,7 +70,7 @@ INSERT INTO vendas (Email, Estado, Cidade, Bairro, Rua, Numero, Produtos, Total,
  'Whey 100% Black Skull | Quantidade: 2 | Preco: R$ 398,00;',
  398.00, 'credito'),
 
-('reilly@gmail.com', 'BA', 'Eunápolis', 'Alto da Boa Vista',
+('ferreirareilly90@gmail.com', 'BA', 'Eunápolis', 'Alto da Boa Vista',
  'Reino Unido', '150',
  'Creatina Monohidratada Black Skull | Quantidade: 1 | Preco: R$ 129,00; Pré-Treino B.O.P.E Black Skull | Quantidade: 1 | Preco: R$ 149,00;',
  278.00, 'debito'),
