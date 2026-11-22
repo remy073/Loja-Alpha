@@ -310,7 +310,7 @@ if(isset($_POST['cadastrar_produto'])){
                             </div>
                             <div class="admin-produto-botoes">
                                 <a href="admin.php?editar=<?php echo $prod['Id']; ?>" class="botao editar">Editar</a>
-                                <a href="admin.php?remover=<?php echo $prod['Id']; ?>" class="botao remover" onclick="return confirm('Tem certeza que deseja remover este produto?');">Remover</a>
+                                <a href="admin.php?remover=<?php echo $prod['Id']; ?>" class="botao remover">Remover</a>
                             </div>
                         </div>
                         <?php
